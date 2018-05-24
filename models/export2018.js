@@ -1,0 +1,32 @@
+const hash = {
+  batchid: 0,
+  distance: 0.0,
+  mls: "",
+  status: "",
+  closingDate: null,
+  salePrice: 0,
+  address: "",
+  dom: 0,
+  pendingDate: null,
+  contributions: 0,
+  beds: 0,
+  fbaths: 0,
+  hbaths: 0,
+  propertyType: "",
+  spSQFT: 0,
+  gla: 0,
+  neighborhood: "",
+  garage: 0,
+  yearBuilt: "",
+  folio: "",
+  pool: 0,
+  site: 0,
+  waterFront: 0,
+  listDate: null,
+  design: "",
+  TOA: "",
+  view: "",
+  reo: 0
+};
+
+module.exports = hash;
