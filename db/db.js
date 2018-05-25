@@ -12,11 +12,11 @@ const { util } = require("./utilities");
 const Firestore = require("@google-cloud/firestore");
 // home/jon/nodeprojects/fileupload/k9space-875d4eb07045.json
 const firestore = new Firestore({
-  projectId: "k9space-81902",
-  keyFilename: path.join(global.dir, "test.json")
+  // projectId: "k9space-81902",
+  // keyFilename: path.join(global.dir, "test.json")
 });
 
-//
+// path.join(global.dir, "test.json")
 const fs = require("fs");
 
 const { each, eachSeries } = require("async");
