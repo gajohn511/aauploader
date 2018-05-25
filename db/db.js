@@ -13,9 +13,10 @@ const Firestore = require("@google-cloud/firestore");
 // home/jon/nodeprojects/fileupload/k9space-875d4eb07045.json
 const firestore = new Firestore({
   projectId: "k9space-81902",
-  keyFilename: path.join(global.dir, "k9space-875d4eb07045.json")
+  keyFilename: path.join(global.dir, "test.json")
 });
 
+//
 const fs = require("fs");
 
 const { each, eachSeries } = require("async");
@@ -232,7 +233,7 @@ function process2(filename, batchid) {
 
     if (firstrow <= 1) return false;
 
-    debugger;
+    // debugger;
     openFiles.push(line);
 
     /* 
@@ -297,7 +298,7 @@ function process2(filename, batchid) {
     //     log(JSON.stringify(ds.data()));
     //   });
     // });
-
+    debugger;
     const collectionRef = firestore.collection("mls");
     const propertyArr = [];
 
@@ -348,7 +349,7 @@ function process2(filename, batchid) {
         );
 
         wStream.on("finish", () => {
-          debug(`finished creating 'log file ${file}'`);
+          debug(`finished creating log file '${file}'`);
         });
 
         wStream.close();
