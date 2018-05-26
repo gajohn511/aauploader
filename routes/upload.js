@@ -33,6 +33,8 @@ const upload = multer({ storage });
 router.post("/", upload.single("ufile"), function(req, res, next) {
   //   debugger;
   if (req.file) {
+    // debugger;
+    // res.send(JSON.parse(process.env.ggl));
     process2(req.file.filename, req.body.batch); // process file
   }
 

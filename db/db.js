@@ -9,14 +9,28 @@ const LineByLineReader = require("line-by-line");
 const hash = require("../models/export2018");
 const { util } = require("./utilities");
 
-const Firestore = require("@google-cloud/firestore");
-// home/jon/nodeprojects/fileupload/k9space-875d4eb07045.json
-const firestore = new Firestore({
-  // projectId: "k9space-81902",
-  // keyFilename: path.join(global.dir, "test.json")
-});
+// const Firestore = require("@google-cloud/firestore");
+// // home/jon/nodeprojects/fileupload/k9space-875d4eb07045.json
+// const firestore = new Firestore({
+//   projectId: "k9space-81902",
+//   keyFilename: path.join(global.dir, "test.json")
+// });
 
 // path.join(global.dir, "test.json")
+
+const admin = require("firebase-admin");
+
+const serviceAccount = process.env.GOOGLE_APPLICATION_CREDENTIALS
+  ? JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS)
+  : "./test.json";
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://k9space-81902.firebaseio.com"
+});
+
+const db = admin.firestore();
+
 const fs = require("fs");
 
 const { each, eachSeries } = require("async");
@@ -299,7 +313,7 @@ function process2(filename, batchid) {
     //   });
     // });
     debugger;
-    const collectionRef = firestore.collection("mls");
+    const collectionRef = db.collection("mls");
     const propertyArr = [];
 
     eachSeries(
@@ -359,6 +373,5 @@ function process2(filename, batchid) {
 }
 
 module.exports = {
-  process,
   process2
 };
